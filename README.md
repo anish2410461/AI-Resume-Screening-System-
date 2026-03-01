@@ -159,12 +159,6 @@ Fields:
 
 ---
 
-# Author
-
-**Anish**
-
-Built using **Zoho Creator**
-
 
 # Application Screenshots
 
