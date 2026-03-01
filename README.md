@@ -169,4 +169,4 @@ Fields:
 ![Job Form](screenshot/jobForm.png)
 
 ## Candidate Application
-![Candidate Form](screenshot/candidateForm.png)
+![Candidate Form](screenshot/CandidateForm.png)
