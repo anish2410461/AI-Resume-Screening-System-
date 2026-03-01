@@ -1,219 +1,179 @@
-AI Resume Screening System
+# AI Resume Screening System
 
-AI Resume Screening System is a low-code recruitment management application built using Zoho Creator that helps recruiters automate resume screening and candidate evaluation.
+AI Resume Screening System is a **low-code recruitment management application built using Zoho Creator** that helps recruiters automate resume screening and candidate evaluation.
 
-The system allows recruiters to create job openings, candidates to apply with resumes, and automatically evaluates applicants based on skills, experience, and job requirements.
+The system allows recruiters to create job openings, candidates to apply with resumes, and automatically evaluates applicants based on **skills, experience, and job requirements**.
 
-Project Objective
+---
+
+## 🎯 Project Objective
 
 Recruiters often receive hundreds of resumes for a single job role. Manually reviewing them is time-consuming.
 
 This project aims to:
 
-Automate resume screening
+- Automate resume screening
+- Rank candidates based on job requirements
+- Help recruiters identify the best applicants quickly
+- Demonstrate how **AI and low-code development** can improve recruitment workflows
 
-Rank candidates based on job requirements
+---
 
-Help recruiters identify the best applicants quickly
+## 🚀 Features
 
-Demonstrate how AI and low-code development can improve recruitment workflows
-
-Features
-Job Management
-
+### Job Management
 Recruiters can create and manage job openings with detailed descriptions and skill requirements.
 
-Candidate Application
-
+### Candidate Application
 Candidates can submit applications and upload resumes.
 
-Resume Evaluation
-
+### Resume Evaluation
 The system evaluates candidates based on skills and experience.
 
-Candidate Ranking
-
+### Candidate Ranking
 Applicants are automatically ranked according to their evaluation scores.
 
-Recruiter Dashboard
-
+### Recruiter Dashboard
 Recruiters can monitor:
 
-Total job openings
+- Total job openings
+- Total applications
+- Top candidates
+- Recruitment statistics
 
-Total applications
-
-Top candidates
-
-Recruitment statistics
-
-Notifications
-
+### Notifications
 Recruiters receive alerts when new candidates apply.
 
-System Modules
-Recruiter Module
+---
 
+## 🧩 System Modules
+
+### Recruiter Module
 Manages recruiter information and job postings.
 
-Fields:
+**Fields**
+- Recruiter ID
+- Name
+- Email
+- Phone Number
+- Company Name
 
-Recruiter ID
+---
 
-Name
-
-Email
-
-Phone Number
-
-Company Name
-
-Job Position Module
-
+### Job Position Module
 Stores job openings and requirements.
 
-Fields:
+**Fields**
 
-Job ID
+- Job ID
+- Job Title
+- Department
+- Required Skills
+- Minimum Experience
+- Job Description
+- Posting Date
+- Recruiter
 
-Job Title
+---
 
-Department
-
-Required Skills
-
-Minimum Experience
-
-Job Description
-
-Posting Date
-
-Recruiter
-
-Candidate Module
-
+### Candidate Module
 Stores candidate details and resumes.
 
-Fields:
+**Fields**
 
-Candidate ID
+- Candidate ID
+- Full Name
+- Email
+- Phone Number
+- Skills
+- Experience
+- Resume Upload
+- Applied Job
+- Application Date
 
-Full Name
+---
 
-Email
-
-Phone Number
-
-Skills
-
-Experience
-
-Resume Upload
-
-Applied Job
-
-Application Date
-
-Resume Evaluation Module
-
+### Resume Evaluation Module
 Evaluates candidates and assigns rankings.
 
-Fields:
+**Fields**
 
-Evaluation ID
+- Evaluation ID
+- Candidate
+- Job Position
+- Skill Match Score
+- Experience Score
+- Overall Score
+- Ranking
+- Evaluation Notes
 
-Candidate
+---
 
-Job Position
+## 🔄 Workflow
 
-Skill Match Score
+1. Recruiter creates a job opening.
+2. Candidate submits application with resume.
+3. System stores candidate information.
+4. Resume is analyzed based on job requirements.
+5. Candidate receives a score.
+6. Candidates are automatically ranked.
+7. Recruiters review and shortlist candidates.
 
-Experience Score
+---
 
-Overall Score
-
-Ranking
-
-Evaluation Notes
-
-Workflow
-
-Recruiter creates a job opening.
-
-Candidate submits application with resume.
-
-System stores candidate information.
-
-Resume is analyzed based on job requirements.
-
-Candidate receives a score.
-
-Candidates are automatically ranked.
-
-Recruiters review and shortlist candidates.
-
-Dashboard Analytics
+## 📊 Dashboard Analytics
 
 The dashboard provides insights such as:
 
-Total Job Openings
+- Total Job Openings
+- Total Applications
+- Top Ranked Candidates
+- Applications by Department
+- Candidate Score Distribution
 
-Total Applications
+---
 
-Top Ranked Candidates
+## 🛠 Technology Stack
 
-Applications by Department
+- **Zoho Creator** – Low-code development platform
+- **Zia AI** – AI-powered automation
+- **Deluge Script** – Workflow logic
+- **Zoho Analytics** – Reporting and dashboards
 
-Candidate Score Distribution
+---
 
-Technology Stack
+## ✅ Advantages
 
-Zoho Creator (Low-Code Development Platform)
+- Reduces manual resume screening
+- Speeds up recruitment processes
+- Improves candidate selection accuracy
+- Easy to maintain using low-code tools
+- Scalable for large hiring processes
 
-Zia AI (AI-powered automation)
+---
 
-Deluge Script (Workflow logic)
+## 🔮 Future Enhancements
 
-Zoho Analytics (Reporting & dashboards)
+- AI resume skill extraction
+- LinkedIn profile integration
+- Interview scheduling automation
+- Candidate recommendation system
+- Resume plagiarism detection
 
-Advantages
+---
 
-Reduces manual resume screening
+## 💼 Use Cases
 
-Speeds up recruitment processes
+- HR Departments
+- Recruitment Agencies
+- Corporate Hiring Teams
+- Startup Hiring Processes
+- University Placement Cells
 
-Improves candidate selection accuracy
+---
 
-Easy to maintain using low-code tools
+## 👨‍💻 Author
 
-Scalable for larger hiring operations
+**Anish**
 
-Future Enhancements
-
-AI resume skill extraction
-
-LinkedIn profile integration
-
-Interview scheduling automation
-
-Candidate recommendation system
-
-Resume plagiarism detection
-
-Use Cases
-
-HR Departments
-
-Recruitment Agencies
-
-Corporate Hiring Teams
-
-Startup Hiring Processes
-
-University Placement Cells
-
-Author
-
-Anish
-
-Project created as part of a learning project using Zoho Creator.
+Project built using **Zoho Creator** as part of a learning and portfolio project.
