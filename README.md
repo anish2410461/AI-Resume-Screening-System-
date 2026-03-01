@@ -1,6 +1,6 @@
 
 
-## 👨‍💻 Author
+##  Author
 
 **Anish**
 
@@ -17,7 +17,7 @@ AI Resume Screening System is a **low-code recruitment management application bu
 
 The system allows recruiters to create job openings, candidates to upload resumes, and automatically evaluates applicants based on **skills, experience, and job requirements**.
 
----
+
 
 # Project Objective
 
@@ -30,7 +30,7 @@ This project aims to:
 - Help recruiters identify the best applicants quickly
 - Demonstrate how **AI and low-code development** improve recruitment workflows
 
----
+
 
 # Features
 
@@ -54,12 +54,12 @@ Recruiters can monitor:
 - Top candidates
 - Recruitment statistics
 
----
+
 
 # System Architecture
 
 
----
+
 
 # System Modules
 
@@ -90,7 +90,7 @@ Fields:
 - Posting Date
 - Recruiter
 
----
+
 
 ## Candidate Module
 
@@ -108,7 +108,7 @@ Fields:
 - Applied Job
 - Application Date
 
----
+
 
 ## Resume Evaluation Module
 
@@ -124,7 +124,7 @@ Fields:
 - Overall Score
 - Ranking
 
----
+
 
 # Workflow
 
@@ -136,7 +136,7 @@ Fields:
 6. Candidates are ranked
 7. Recruiters review top applicants
 
----
+
 
 # Technology Stack
 
@@ -147,7 +147,7 @@ Fields:
 | Deluge Script | Workflow automation |
 | Zoho Analytics | Reports and dashboards |
 
----
+
 
 # Future Enhancements
 
@@ -157,7 +157,7 @@ Fields:
 - Candidate recommendation system
 - Resume plagiarism detection
 
----
+
 
 
 # Application Screenshots
