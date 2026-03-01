@@ -1,66 +1,62 @@
 AI Resume Screening System
 
-An AI-powered Resume Screening System built using Zoho Creator to help recruiters efficiently manage job applications and automatically evaluate candidates based on their skills and experience.
+AI Resume Screening System is a low-code recruitment management application built using Zoho Creator that helps recruiters automate resume screening and candidate evaluation.
 
-The system allows recruiters to post job openings, candidates to upload resumes, and the platform automatically analyzes and ranks applicants using AI-based evaluation logic.
+The system allows recruiters to create job openings, candidates to apply with resumes, and automatically evaluates applicants based on skills, experience, and job requirements.
 
-Project Overview
+Project Objective
 
-Recruitment teams often receive hundreds of resumes for a single job opening. Manually reviewing these resumes is time-consuming and inefficient.
+Recruiters often receive hundreds of resumes for a single job role. Manually reviewing them is time-consuming.
 
-The AI Resume Screening System automates this process by:
+This project aims to:
 
-Collecting candidate applications
+Automate resume screening
 
-Extracting candidate skills and experience
+Rank candidates based on job requirements
 
-Comparing them with job requirements
+Help recruiters identify the best applicants quickly
 
-Automatically ranking candidates
+Demonstrate how AI and low-code development can improve recruitment workflows
 
-Helping recruiters shortlist the best applicants
-
-This application demonstrates how low-code platforms like Zoho Creator can be used to build intelligent business applications.
-
-Key Features
+Features
 Job Management
 
-Recruiters can create and manage job openings including job descriptions, required skills, and minimum experience.
+Recruiters can create and manage job openings with detailed descriptions and skill requirements.
 
-Resume Submission
+Candidate Application
 
-Candidates can apply for jobs and upload their resumes directly through the application.
+Candidates can submit applications and upload resumes.
 
-AI-Based Resume Analysis
+Resume Evaluation
 
-The system analyzes resumes and compares them with job requirements to generate a candidate suitability score.
+The system evaluates candidates based on skills and experience.
 
 Candidate Ranking
 
-Applicants are automatically ranked based on their evaluation score.
+Applicants are automatically ranked according to their evaluation scores.
 
 Recruiter Dashboard
 
-Recruiters can view:
+Recruiters can monitor:
+
+Total job openings
 
 Total applications
 
-Job openings
-
 Top candidates
 
-Application statistics
+Recruitment statistics
 
-Automated Notifications
+Notifications
 
-Recruiters receive notifications when new candidates apply for a job.
+Recruiters receive alerts when new candidates apply.
 
 System Modules
-1. Recruiter Management
+Recruiter Module
 
-Stores recruiter details and manages job postings.
+Manages recruiter information and job postings.
 
-Fields
+Fields:
 
 Recruiter ID
 
@@ -72,11 +68,11 @@ Phone Number
 
 Company Name
 
-2. Job Position Management
+Job Position Module
 
-Allows recruiters to create job openings.
+Stores job openings and requirements.
 
-Fields
+Fields:
 
 Job ID
 
@@ -94,11 +90,11 @@ Posting Date
 
 Recruiter
 
-3. Candidate Management
+Candidate Module
 
-Stores candidate information and resumes.
+Stores candidate details and resumes.
 
-Fields
+Fields:
 
 Candidate ID
 
@@ -118,11 +114,11 @@ Applied Job
 
 Application Date
 
-4. Resume Evaluation
+Resume Evaluation Module
 
-Evaluates and ranks candidates.
+Evaluates candidates and assigns rankings.
 
-Fields
+Fields:
 
 Evaluation ID
 
@@ -142,77 +138,63 @@ Evaluation Notes
 
 Workflow
 
-Recruiter creates a job position.
+Recruiter creates a job opening.
 
-Candidate submits an application with resume.
+Candidate submits application with resume.
 
-The system stores candidate data.
+System stores candidate information.
 
-AI or scoring logic analyzes the resume.
+Resume is analyzed based on job requirements.
 
-Candidate receives a suitability score.
+Candidate receives a score.
 
-Candidates are ranked automatically.
+Candidates are automatically ranked.
 
-Recruiters view the ranked candidate list.
+Recruiters review and shortlist candidates.
 
-Reports
+Dashboard Analytics
 
-The system generates multiple reports:
-
-All Candidates
-
-Candidates by Job Position
-
-Top Ranked Candidates
-
-Shortlisted Candidates
-
-Application Statistics
-
-Dashboard
-
-The dashboard displays key analytics such as:
+The dashboard provides insights such as:
 
 Total Job Openings
 
 Total Applications
 
-Top Candidates
+Top Ranked Candidates
 
 Applications by Department
 
 Candidate Score Distribution
 
-Technologies Used
+Technology Stack
 
-Zoho Creator – Low-code application development
+Zoho Creator (Low-Code Development Platform)
 
-Zia AI – AI-powered automation
+Zia AI (AI-powered automation)
 
-Deluge Script – Workflow automation
+Deluge Script (Workflow logic)
 
-Zoho Analytics – Reports and dashboards
+Zoho Analytics (Reporting & dashboards)
 
-Advantages of the System
+Advantages
 
-Reduces manual resume screening time
+Reduces manual resume screening
 
-Improves recruitment efficiency
+Speeds up recruitment processes
 
-Automatically ranks candidates
+Improves candidate selection accuracy
 
-Helps recruiters make better hiring decisions
+Easy to maintain using low-code tools
 
-Scalable for large recruitment processes
+Scalable for larger hiring operations
 
 Future Enhancements
 
-Resume skill extraction using AI
+AI resume skill extraction
 
-Integration with LinkedIn profiles
+LinkedIn profile integration
 
-AI interview scheduling
+Interview scheduling automation
 
 Candidate recommendation system
 
@@ -220,18 +202,18 @@ Resume plagiarism detection
 
 Use Cases
 
-This system can be used by:
-
 HR Departments
 
 Recruitment Agencies
 
-Startups
-
 Corporate Hiring Teams
+
+Startup Hiring Processes
 
 University Placement Cells
 
-Conclusion
+Author
 
-The AI Resume Screening System simplifies the recruitment process by automating resume evaluation and candidate ranking. Using Zoho Creator's low-code platform and AI capabilities, organizations can build powerful hiring tools without complex programming.
+Anish
+
+Project created as part of a learning project using Zoho Creator.
