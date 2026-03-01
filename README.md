@@ -163,10 +163,10 @@ Fields:
 # Application Screenshots
 
 ## Dashboard
-![Dashboard](screenshots/dashboard.png)
+![Dashboard](screenshot/Dashboard.png)
 
 ## Job Creation Form
-![Job Form](screenshots/job-form.png)
+![Job Form](screenshot/jobForm.png)
 
 ## Candidate Application
-![Candidate Form](screenshots/candidate-form.png)
+![Candidate Form](screenshot/candidateForm.png)
