@@ -1,0 +1,2461 @@
+/*
+ * Author       : anish2410461_ssn
+ * Generated on : 01-Mar-2026 18:10:51
+ * Version      : 1.0
+ */
+ application "AI Resume Screening System"
+ {
+ 	date format = "dd-MMM-yyyy"
+ 	time zone = "America/Los_Angeles"
+ 	time format = "24-hr"
+ 	forms
+	{
+		form candidates
+		{
+			displayname = "Candidates"
+			success message = "Candidate Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			candidate_id
+			(
+    			type = autonumber
+				displayname = "Candidate ID"
+				start index = 1
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			full_name
+			(
+    			type = name
+				displayname = "Full Name"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+	     			 visibility = false
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			email
+			(
+    			type = email
+				displayname = "Email"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			phone_number
+			(
+    			type = phonenumber
+				displayname = "Phone Number"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			skills
+			(
+    			type = textarea
+				displayname = "Skills"
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			experience
+			(
+				type = number
+				displayname = "Experience"
+				maxchar = 19
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			resume_upload
+			(
+    			type = url
+				displayname = "Resume Upload"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			applied_job
+			(
+				type = list	
+				displayname = "Applied Job"
+				values  = job_positions.ID
+    			displayformat = [job_id]
+				allow new entries
+				[
+					displayname = "Add New"
+				]
+				sortorder = ascending
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			application_date
+			(
+    			type = datetime
+				displayname = "Application Date"
+				timedisplayoptions = "hh:mm:ss"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form job_positions
+		{
+			displayname = "Job Positions"
+			success message = "Job Position Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			job_id
+			(
+    			type = autonumber
+				displayname = "Job ID"
+				start index = 1
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			job_title
+			(
+    			type = text
+				displayname = "Job Title"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			department
+			(
+				type = picklist
+				displayname = "Department"
+				values = {"Engineering","Finance","HR","Marketing","Other"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			required_skills
+			(
+    			type = textarea
+				displayname = "Required Skills"
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			minimum_experience
+			(
+				type = number
+				displayname = "Minimum Experience"
+				maxchar = 19
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			job_description
+			(
+    			type = textarea
+				displayname = "Job Description"
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			posting_date
+			(
+    			type = date
+				displayname = "Posting Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			recruiter
+			(
+				type = list	
+				displayname = "Recruiter"
+				values  = recruiters.ID
+    			displayformat = [recruiter_id]
+				allow new entries
+				[
+					displayname = "Add New"
+				]
+				sortorder = ascending
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+			blueprint components
+			{
+				stages = {"Job Posted","Candidates Applied","Job Drafted","Job Withdrawn","Shortlisted","Interview Scheduled","Rejected","Interview Conducted","Interview Rescheduled","Final Evaluation","Reinterview","Offer Extended","Offer Accepted","Offer Rejected","Onboarding Initiated","Onboarding Completed","Onboarding Delayed","Job Closed"}
+			}
+		}
+		form recruiters
+		{
+			displayname = "Recruiters"
+			success message = "Recruiter Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			recruiter_id
+			(
+    			type = autonumber
+				displayname = "Recruiter ID"
+				start index = 1
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			name
+			(
+    			type = name
+				displayname = "Name"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+	     			 visibility = false
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			email
+			(
+    			type = email
+				displayname = "Email"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			phone_number
+			(
+    			type = phonenumber
+				displayname = "Phone Number"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			company_name
+			(
+    			type = text
+				displayname = "Company Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form resume_evaluations
+		{
+			displayname = "Resume Evaluations"
+			success message = "Resume Evaluation Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			candidate
+			(
+				type = list	
+				displayname = "Candidate"
+				values  = candidates.ID
+    			displayformat = [candidate_id]
+				allow new entries
+				[
+					displayname = "Add New"
+				]
+				sortorder = ascending
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			job_position
+			(
+				type = list	
+				displayname = "Job Position"
+				values  = job_positions.ID
+    			displayformat = [job_id]
+				allow new entries
+				[
+					displayname = "Add New"
+				]
+				sortorder = ascending
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			skill_match_score
+			(
+				type = number
+				displayname = "Skill Match Score"
+				maxchar = 19
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			experience_score
+			(
+				type = number
+				displayname = "Experience Score"
+				maxchar = 19
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			overall_score
+			(
+				type = number
+				displayname = "Overall Score"
+				maxchar = 19
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			ranking
+			(
+				type = number
+				displayname = "Ranking"
+				maxchar = 19
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			evaluation_notes
+			(
+    			type = textarea
+				displayname = "Evaluation Notes"
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+			blueprint components
+			{
+				stages = {"Resume Submitted","Resume Reviewed","Resume Rejected","Skills Match Evaluated","Resume Pending Further Review","Experience Scored","Overall Score Calculated","Ranking Assigned","Evaluation Notes Finalized","Evaluation Complete","Interview Scheduled","Candidate Rejected","Interview Conducted","Interview Rescheduled","Interview Cancelled","Final Evaluation Updated","Hiring Decision Made","Offer Extended","Offer Accepted","Offer Declined","Offer Withdrawn","Onboarding Initiated","Onboarding Complete","Onboarding Delayed","Candidate Hired"}
+			}
+		}
+	}
+	reports
+	{
+		list resume_evaluations_Report
+		{
+			displayName = "All Resume Evaluations"
+			show all rows from resume_evaluations    
+			(
+				candidate as "Candidate"
+				job_position as "Job Position"
+				skill_match_score as "Skill Match Score"
+				experience_score as "Experience Score"
+				overall_score as "Overall Score"
+				ranking as "Ranking"
+				evaluation_notes as "Evaluation Notes"
+			)
+		}
+		list job_positions_Report
+		{
+			displayName = "All Job Positions"
+			show all rows from job_positions    
+			(
+				job_id as "Job ID"
+				job_title as "Job Title"
+				department as "Department"
+				required_skills as "Required Skills"
+				minimum_experience as "Minimum Experience"
+				job_description as "Job Description"
+				posting_date as "Posting Date"
+				recruiter as "Recruiter"
+			)
+			conditional formatting
+			(
+				"New Formatting1"
+				{
+				condition = (department == "Engineering")
+				fields = [department]
+				format = "color:#ffffff;background-color:#765f89;"
+				}
+				"New Formatting2"
+				{
+				condition = (department == "HR")
+				fields = [department]
+				format = "color:#000000;background-color:#1bbc9b;"
+				}
+				"New Formatting3"
+				{
+				condition = (department == "Other")
+				fields = [department]
+				format = "color:#ffffff;background-color:#e84c3d;"
+				}
+			)
+		}
+		kanban job_positions_by_department
+		{
+			displayName = "Departments"
+			show all rows from job_positions    
+			(
+				job_id as "Job ID"
+				job_title as "Job Title"
+				department as "Department"
+				required_skills as "Required Skills"
+				minimum_experience as "Minimum Experience"
+				job_description as "Job Description"
+				posting_date as "Posting Date"
+				recruiter as "Recruiter"
+			)
+			options
+			(
+	 			display field = department
+	 		)
+		}
+		list candidates_Report
+		{
+			displayName = "All Candidates"
+			show all rows from candidates    
+			(
+				candidate_id as "Candidate ID"
+				full_name  as "Full Name"
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				email as "Email"
+				phone_number as "Phone Number"
+				skills as "Skills"
+				experience as "Experience"
+				resume_upload as "Resume Upload"
+				applied_job as "Applied Job"
+				application_date as "Application Date"
+			)
+		}
+		list recruiters_Report
+		{
+			displayName = "All Recruiters"
+			show all rows from recruiters    
+			(
+				recruiter_id as "Recruiter ID"
+				name  as "Name"
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				email as "Email"
+				phone_number as "Phone Number"
+				company_name as "Company Name"
+			)
+		}
+	}
+	pages
+	{
+		page DashBoard
+		{
+			displayname = "Dashboard"
+			Content="<zml    \t\t\n\t\t\n\t\t\n\t\t\n\t\t\n>\n\t<layout>\n\t<row>\n\t<column\n   \t\t width='60%'\n   \t>\n\t<chart \n\telementName='Chart 1'\n\n\t\n\ttitle = 'Department by Minimum Experience'\n\t\n\t\ttitleSize = '16px'\n\ttype = 'Bar'\n\txtitle = 'Department'\n\tytitle = 'Minimum Experience'\n\tbgColor = 'rgb(255, 255, 255)'\n\ttheme = 'theme4'\n\tlegendPos = 'none'\n\theightType = 'auto'\n\theightValue = '300px'\n\tappLinkName = 'thisapp'\n\tformLinkName = 'job_positions'\n\txfield = 'department'\n\tyfields = 'sum:minimum_experience'\n\t\tDelugeCriteria = 'department is not null &amp;&amp; department != &quot;&quot;'\n/>\n\n</column><column\n   \t\t width='20%'\n   \t>\n\t<row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<panel elementName='Panel 1'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tbgColor = '#FFFFFF'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '20px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginRight = '10px' \n\tmarginBottom = '0px'\n\tmarginTop = '10px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#0CC197'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'travel-world'\n\tsize = '20px'\n\tcornerRadius = '10px'\n\ticonType = 'outline'\n/>\n</pc><pc \n\t\n>\n\t<text \n\n\tmarginLeft = '0px'\n\tmarginRight = '0px' \n\tmarginTop = '10px'\n\tcolor = '#0CC197'\n\tsize = '24px'\n\tbold = 'true' \n\tfontFamily = 'lato, arimo, sans-serif' \n\ttype = 'Form Data'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t  value = 'thisapp.resume_evaluations.ID.count'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr><pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '10px'\n\tbgColor = '#0CC197'\n\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginBottom = '5px'\n\tcolor = '#FFFFFF'\n\tsize = '16px'\n\tfontFamily = 'lato, arimo, sans-serif' \n\ttype = 'Text'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\n\n\n\n\t  value = 'Total Resume Evaluations'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column>\n</row><row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<panel elementName='Panel 2'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tbgColor = '#FFFFFF'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '20px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginRight = '10px' \n\tmarginBottom = '0px'\n\tmarginTop = '10px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#FB7D56'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'education-award-55'\n\tsize = '20px'\n\tcornerRadius = '10px'\n\ticonType = 'outline'\n/>\n</pc><pc \n\t\n>\n\t<text \n\n\tmarginLeft = '0px'\n\tmarginRight = '0px' \n\tmarginTop = '10px'\n\tcolor = '#FB7D56'\n\tsize = '24px'\n\tbold = 'true' \n\tfontFamily = 'lato, arimo, sans-serif' \n\ttype = 'Form Data'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t  value = 'thisapp.job_positions.ID.count'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr><pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '10px'\n\tbgColor = '#FB7D56'\n\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginBottom = '5px'\n\tcolor = '#FFFFFF'\n\tsize = '16px'\n\tfontFamily = 'lato, arimo, sans-serif' \n\ttype = 'Text'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\n\n\n\n\t  value = 'Total Job Positions'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column>\n</row>\n</column><column\n   \t\t width='20%'\n   \t>\n\t<row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<panel elementName='Panel 3'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tbgColor = '#FFFFFF'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '20px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginRight = '10px' \n\tmarginBottom = '0px'\n\tmarginTop = '10px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#00BDDE'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'travel-world'\n\tsize = '20px'\n\tcornerRadius = '10px'\n\ticonType = 'outline'\n/>\n</pc><pc \n\t\n>\n\t<text \n\n\tmarginLeft = '0px'\n\tmarginRight = '0px' \n\tmarginTop = '10px'\n\tcolor = '#00BDDE'\n\tsize = '24px'\n\tbold = 'true' \n\tfontFamily = 'lato, arimo, sans-serif' \n\ttype = 'Form Data'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t  value = 'thisapp.candidates.ID.count'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr><pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '10px'\n\tbgColor = '#00BDDE'\n\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginBottom = '5px'\n\tcolor = '#FFFFFF'\n\tsize = '16px'\n\tfontFamily = 'lato, arimo, sans-serif' \n\ttype = 'Text'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\n\n\n\n\t  value = 'Total Candidates'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column>\n</row><row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<panel elementName='Panel 4'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tbgColor = '#FFFFFF'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '20px'\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginRight = '10px' \n\tmarginBottom = '0px'\n\tmarginTop = '10px'\n\n\tcolor = '#FFFFFF'\n\tbgColor = '#647CF9'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'travel-world'\n\tsize = '20px'\n\tcornerRadius = '10px'\n\ticonType = 'outline'\n/>\n</pc><pc \n\t\n>\n\t<text \n\n\tmarginLeft = '0px'\n\tmarginRight = '0px' \n\tmarginTop = '10px'\n\tcolor = '#647CF9'\n\tsize = '24px'\n\tbold = 'true' \n\tfontFamily = 'lato, arimo, sans-serif' \n\ttype = 'Form Data'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n\n\t  value = 'thisapp.recruiters.ID.count'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr><pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '10px'\n\tbgColor = '#647CF9'\n\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginBottom = '5px'\n\tcolor = '#FFFFFF'\n\tsize = '16px'\n\tfontFamily = 'lato, arimo, sans-serif' \n\ttype = 'Text'\n\n\tbgColor = 'rgba(0, 0, 0, 0)'\n\n\n\n\n\n\n\t  value = 'Total Recruiters'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column>\n</row>\n</column>\n</row><row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<chart \n\telementName='Chart 2'\n\n\t\n\ttitle = 'Distribution by Department'\n\t\n\ttype = 'Bar'\n\txtitle = 'Department'\n\tytitle = 'Count of Department'\n\tbgColor = 'rgb(255, 255, 255)'\n\ttheme = 'theme3'\n\tlegendPos = 'none'\n\theightType = 'auto'\n\theightValue = '300px'\n\tappLinkName = 'thisapp'\n\tformLinkName = 'job_positions'\n\txfield = 'department'\n\tyfields = 'count:department'\n\t\tDelugeCriteria = 'department is not null &amp;&amp; department != &quot;&quot;'\n/>\n\n</column>\n</row><row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<report \n\telementName='Report'\n\n\t\tappLinkName = 'thisapp'\n\t\tlinkName = 'resume_evaluations_Report'\n\t\n\t\tiszreport = 'false'\n\t\t\t\t\tzc_Footer = 'false'\n\t\t\t\t\tzc_AddRec = 'false'\n\t\t\t\t\tzc_EditRec = 'false'\n\t\t\t\t\tzc_Print = 'false'\n\t\t\t\t\tzc_Export = 'false'\n\t\t\t\t\tzc_DelRec = 'false'\n\t\t\t\t\tzc_DuplRec = 'false'\n\t\t\t\t\tzc_Search = 'false'\n\t\t\t\t\tzc_EditBulkRec = 'false'\n\t\t\t\t\tzc_BulkDelete = 'false'\n\t\t\t\t\tzc_BulkDuplicate = 'false'\n\theightType = 'auto'\n\theightValue = '700'\n\n/>\n</column>\n</row>\n</layout>\n</zml>"
+		}
+	}
+
+
+		workflow
+		{
+
+
+
+
+		blueprint
+		{
+    			candidate_evaluation_pipeline as "Candidate Evaluation Pipeline"
+    			{
+        			type = Blueprint
+        			form = resume_evaluations
+        			start
+        			{
+            			start stage = "Resume Submitted"
+        			}
+        			stages
+        			{
+           			"Resume Submitted"
+           			{
+           			}
+           			"Resume Reviewed"
+           			{
+           			}
+           			"Resume Rejected"
+           			{
+           			}
+           			"Skills Match Evaluated"
+           			{
+           			}
+           			"Resume Pending Further Review"
+           			{
+           			}
+           			"Experience Scored"
+           			{
+           			}
+           			"Overall Score Calculated"
+           			{
+           			}
+           			"Ranking Assigned"
+           			{
+           			}
+           			"Evaluation Notes Finalized"
+           			{
+           			}
+           			"Evaluation Complete"
+           			{
+           			}
+           			"Interview Scheduled"
+           			{
+           			}
+           			"Candidate Rejected"
+           			{
+           			}
+           			"Interview Conducted"
+           			{
+           			}
+           			"Interview Rescheduled"
+           			{
+           			}
+           			"Interview Cancelled"
+           			{
+           			}
+           			"Final Evaluation Updated"
+           			{
+           			}
+           			"Hiring Decision Made"
+           			{
+           			}
+           			"Offer Extended"
+           			{
+           			}
+           			"Offer Accepted"
+           			{
+           			}
+           			"Offer Declined"
+           			{
+           			}
+           			"Offer Withdrawn"
+           			{
+           			}
+           			"Onboarding Initiated"
+           			{
+           			}
+           			"Onboarding Complete"
+           			{
+           			}
+           			"Onboarding Delayed"
+           			{
+           			}
+           			"Candidate Hired"
+           			{
+           			}
+        			}
+        			transitions
+        			{
+    				accept_offer as "Accept Job Offer"
+    				{
+         				type = normal
+         				from stage = "Offer Extended"
+         				to stage = "Offer Accepted"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				assign_ranking as "Assign Candidate Ranking"
+    				{
+         				type = normal
+         				from stage = "Overall Score Calculated"
+         				to stage = "Ranking Assigned"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				calculate_experience as "Calculate Experience Score"
+    				{
+         				type = normal
+         				from stage = "Skills Match Evaluated"
+         				to stage = "Experience Scored"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				cancel_interview as "Cancel Interview"
+    				{
+         				type = normal
+         				from stage = "Interview Scheduled"
+         				to stage = "Interview Cancelled"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				complete_evaluation as "Complete Evaluation Process"
+    				{
+         				type = normal
+         				from stage = "Evaluation Notes Finalized"
+         				to stage = "Evaluation Complete"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				complete_onboarding as "Complete Onboarding Process"
+    				{
+         				type = normal
+         				from stage = "Onboarding Initiated"
+         				to stage = "Onboarding Complete"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				compute_overall as "Compute Overall Score"
+    				{
+         				type = normal
+         				from stage = "Experience Scored"
+         				to stage = "Overall Score Calculated"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				conduct_interview as "Conduct Interview"
+    				{
+         				type = normal
+         				from stage = "Interview Scheduled"
+         				to stage = "Interview Conducted"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				confirm_hire as "Confirm Hire"
+    				{
+         				type = normal
+         				from stage = "Onboarding Complete"
+         				to stage = "Candidate Hired"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				decline_offer as "Decline Job Offer"
+    				{
+         				type = normal
+         				from stage = "Offer Extended"
+         				to stage = "Offer Declined"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				delay_onboarding as "Delay Onboarding"
+    				{
+         				type = normal
+         				from stage = "Onboarding Initiated"
+         				to stage = "Onboarding Delayed"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				evaluate_skills as "Evaluate Skill Match"
+    				{
+         				type = normal
+         				from stage = "Resume Reviewed"
+         				to stage = "Skills Match Evaluated"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				extend_offer as "Extend Job Offer"
+    				{
+         				type = normal
+         				from stage = "Hiring Decision Made"
+         				to stage = "Offer Extended"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				finalize_notes as "Finalize Evaluation Feedback"
+    				{
+         				type = normal
+         				from stage = "Ranking Assigned"
+         				to stage = "Evaluation Notes Finalized"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				flag_for_review as "Flag for Additional Review"
+    				{
+         				type = normal
+         				from stage = "Resume Reviewed"
+         				to stage = "Resume Pending Further Review"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				initiate_onboarding as "Begin Onboarding Process"
+    				{
+         				type = normal
+         				from stage = "Offer Accepted"
+         				to stage = "Onboarding Initiated"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				make_decision as "Make Hiring Decision"
+    				{
+         				type = normal
+         				from stage = "Final Evaluation Updated"
+         				to stage = "Hiring Decision Made"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				reject_after_decision as "Reject Candidate After Decision"
+    				{
+         				type = normal
+         				from stage = "Hiring Decision Made"
+         				to stage = "Candidate Rejected"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				reject_after_interview as "Reject Candidate After Interview"
+    				{
+         				type = normal
+         				from stage = "Final Evaluation Updated"
+         				to stage = "Candidate Rejected"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				reject_after_ranking as "Reject After Ranking"
+    				{
+         				type = normal
+         				from stage = "Ranking Assigned"
+         				to stage = "Resume Rejected"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				reject_candidate as "Reject Candidate"
+    				{
+         				type = normal
+         				from stage = "Evaluation Complete"
+         				to stage = "Candidate Rejected"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				reject_delayed as "Reject Candidate Due to Delay"
+    				{
+         				type = normal
+         				from stage = "Onboarding Delayed"
+         				to stage = "Candidate Rejected"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				reject_final as "Reject After Final Review"
+    				{
+         				type = normal
+         				from stage = "Evaluation Notes Finalized"
+         				to stage = "Resume Rejected"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				reject_low_experience as "Reject Due to Insufficient Experience"
+    				{
+         				type = normal
+         				from stage = "Experience Scored"
+         				to stage = "Resume Rejected"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				reject_low_skill as "Reject Due to Low Skill Match"
+    				{
+         				type = normal
+         				from stage = "Skills Match Evaluated"
+         				to stage = "Resume Rejected"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				reject_overall as "Reject Based on Overall Score Threshold"
+    				{
+         				type = normal
+         				from stage = "Overall Score Calculated"
+         				to stage = "Resume Rejected"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				reject_resume as "Reject Resume"
+    				{
+         				type = normal
+         				from stage = "Resume Submitted"
+         				to stage = "Resume Rejected"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				reschedule_interview as "Reschedule Interview"
+    				{
+         				type = normal
+         				from stage = "Interview Scheduled"
+         				to stage = "Interview Rescheduled"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				resume_onboarding as "Resume Onboarding"
+    				{
+         				type = normal
+         				from stage = "Onboarding Delayed"
+         				to stage = "Onboarding Initiated"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				schedule_interview as "Schedule Interview"
+    				{
+         				type = normal
+         				from stage = "Evaluation Complete"
+         				to stage = "Interview Scheduled"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				start_review as "Begin Resume Review"
+    				{
+         				type = normal
+         				from stage = "Resume Submitted"
+         				to stage = "Resume Reviewed"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				update_evaluation as "Update Evaluation with Interview Feedback"
+    				{
+         				type = normal
+         				from stage = "Interview Conducted"
+         				to stage = "Final Evaluation Updated"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				withdraw_offer as "Withdraw Job Offer"
+    				{
+         				type = normal
+         				from stage = "Offer Extended"
+         				to stage = "Offer Withdrawn"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+        			}
+    			}
+    			job_recruitment_workflow as "Job Recruitment Workflow"
+    			{
+        			type = Blueprint
+        			form = job_positions
+        			start
+        			{
+            			start stage = "Job Posted"
+        			}
+        			stages
+        			{
+           			"Job Posted"
+           			{
+           			}
+           			"Candidates Applied"
+           			{
+           			}
+           			"Job Drafted"
+           			{
+           			}
+           			"Job Withdrawn"
+           			{
+           			}
+           			"Shortlisted"
+           			{
+           			}
+           			"Interview Scheduled"
+           			{
+           			}
+           			"Rejected"
+           			{
+           			}
+           			"Interview Conducted"
+           			{
+           			}
+           			"Interview Rescheduled"
+           			{
+           			}
+           			"Final Evaluation"
+           			{
+           			}
+           			"Reinterview"
+           			{
+           			}
+           			"Offer Extended"
+           			{
+           			}
+           			"Offer Accepted"
+           			{
+           			}
+           			"Offer Rejected"
+           			{
+           			}
+           			"Onboarding Initiated"
+           			{
+           			}
+           			"Onboarding Completed"
+           			{
+           			}
+           			"Onboarding Delayed"
+           			{
+           			}
+           			"Job Closed"
+           			{
+           			}
+        			}
+        			transitions
+        			{
+    				accept_offer as "Accept Job Offer"
+    				{
+         				type = normal
+         				from stage = "Offer Extended"
+         				to stage = "Offer Accepted"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				cancel_job as "Cancel Job Posting"
+    				{
+         				type = normal
+         				from stage = "Job Drafted"
+         				to stage = "Job Withdrawn"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				close_job as "Close Job Position"
+    				{
+         				type = normal
+         				from stage = "Onboarding Completed"
+         				to stage = "Job Closed"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				complete_onboarding as "Complete Onboarding"
+    				{
+         				type = normal
+         				from stage = "Onboarding Initiated"
+         				to stage = "Onboarding Completed"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				conduct_interview as "Conduct Interview"
+    				{
+         				type = normal
+         				from stage = "Interview Scheduled"
+         				to stage = "Interview Conducted"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				delay_onboarding as "Delay Onboarding"
+    				{
+         				type = normal
+         				from stage = "Onboarding Initiated"
+         				to stage = "Onboarding Delayed"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				edit_job_posting as "Edit Job Posting"
+    				{
+         				type = normal
+         				from stage = "Job Posted"
+         				to stage = "Job Drafted"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				evaluate_interview as "Evaluate Interview Performance"
+    				{
+         				type = normal
+         				from stage = "Interview Conducted"
+         				to stage = "Final Evaluation"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				extend_offer as "Extend Job Offer"
+    				{
+         				type = normal
+         				from stage = "Final Evaluation"
+         				to stage = "Offer Extended"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				initiate_onboarding as "Begin Onboarding Process"
+    				{
+         				type = normal
+         				from stage = "Offer Accepted"
+         				to stage = "Onboarding Initiated"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				publish_job as "Publish Job Posting"
+    				{
+         				type = normal
+         				from stage = "Job Drafted"
+         				to stage = "Job Posted"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				reconsider_candidate as "Reconsider Candidate"
+    				{
+         				type = normal
+         				from stage = "Offer Rejected"
+         				to stage = "Shortlisted"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				reinterview_candidate as "Schedule Reinterview"
+    				{
+         				type = normal
+         				from stage = "Interview Conducted"
+         				to stage = "Reinterview"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				reject_candidate as "Reject Candidate"
+    				{
+         				type = normal
+         				from stage = "Shortlisted"
+         				to stage = "Rejected"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				reject_offer as "Decline Job Offer"
+    				{
+         				type = normal
+         				from stage = "Offer Extended"
+         				to stage = "Offer Rejected"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				reschedule_interview as "Reschedule Interview"
+    				{
+         				type = normal
+         				from stage = "Interview Scheduled"
+         				to stage = "Interview Rescheduled"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				resume_onboarding as "Resume Onboarding"
+    				{
+         				type = normal
+         				from stage = "Onboarding Delayed"
+         				to stage = "Onboarding Initiated"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				review_applications as "Review Applications"
+    				{
+         				type = normal
+         				from stage = "Job Posted"
+         				to stage = "Candidates Applied"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				schedule_interview as "Schedule Interviews"
+    				{
+         				type = normal
+         				from stage = "Candidates Applied"
+         				to stage = "Interview Scheduled"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				shortlist_candidates as "Shortlist Candidates"
+    				{
+         				type = normal
+         				from stage = "Candidates Applied"
+         				to stage = "Shortlisted"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+    				withdraw_job as "Withdraw Job Posting"
+    				{
+         				type = normal
+         				from stage = "Job Posted"
+         				to stage = "Job Withdrawn"
+         				before
+         				{
+         				}
+         				after
+         				{
+         				}
+  				}
+        			}
+    			}
+		}
+
+
+	}
+	share_settings
+	{
+			"Read"
+			{
+				name = "Read"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have read permission for all components\n"
+			}
+			"Write"
+			{
+				name = "Write"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have write permission for all components\n"
+			}
+			"HR Administrator"
+			{
+				name = "HR Administrator"
+				type = Users_Permissions
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Manage recruiter accounts and user permissions \n"
+				ModulePermissions
+				{
+					candidates
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							candidates_Report={"View","Edit","Delete"}
+						}
+					}
+					recruiters
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							recruiters_Report={"View","Edit","Delete"}
+						}
+					}
+					job_positions
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							job_positions_by_department={"View","Edit","Delete"}
+							job_positions_Report={"View","Edit","Delete"}
+						}
+					}
+					resume_evaluations
+					{
+						enabled= Viewall,Modifyall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							resume_evaluations_Report={"View","Edit","Delete"}
+						}
+					}
+				}
+			}
+			"AI Evaluation Analyst"
+			{
+				name = "AI Evaluation Analyst"
+				type = Users_Permissions
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Review and validate AI-generated resume scores and rankings \n"
+				ModulePermissions
+				{
+					resume_evaluations
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							resume_evaluations_Report={"View","Edit","Delete"}
+						}
+					}
+				}
+			}
+			"Administrator"
+			{
+				name = "Administrator"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have all the permissions.\n"
+			}
+			"Developer"
+			{
+				name = "Developer"
+				type = Developer
+				permissions = {Chat:false, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Developer Profile\n"
+			}
+			"Talent Acquisition Manager"
+			{
+				name = "Talent Acquisition Manager"
+				type = Users_Permissions
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Oversee multiple hiring campaigns across departments \n"
+				ModulePermissions
+				{
+					candidates
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							candidates_Report={"View","Edit","Delete"}
+						}
+					}
+					job_positions
+					{
+						enabled= Create,Viewall,Modifyall,Import,Export,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							job_positions_by_department={"View","Edit","Delete"}
+							job_positions_Report={"View","Edit","Delete"}
+						}
+					}
+					resume_evaluations
+					{
+						enabled= Viewall,Modifyall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							resume_evaluations_Report={"View","Edit","Delete"}
+						}
+					}
+				}
+			}
+			"Recruiter"
+			{
+				name = "Recruiter"
+				type = Users_Permissions
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Create and manage job postings with detailed requirements \n"
+				ModulePermissions
+				{
+					candidates
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							candidates_Report={"View","Edit"}
+						}
+					}
+					job_positions
+					{
+						enabled= Create,Viewall,Tab 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							job_positions_by_department={"View","Edit"}
+							job_positions_Report={"View","Edit"}
+						}
+					}
+					resume_evaluations
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							resume_evaluations_Report={"View","Edit"}
+						}
+					}
+				}
+			}
+			"Hiring Manager"
+			{
+				name = "Hiring Manager"
+				type = Customer_Portal
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Review candidate rankings and evaluation summaries \n"
+				ModulePermissions
+				{
+					candidates
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							candidates_Report={"View","Edit"}
+						}
+					}
+					resume_evaluations
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							resume_evaluations_Report={"View","Edit"}
+						}
+					}
+				}
+			}
+			"Job Candidate"
+			{
+				name = "Job Candidate"
+				type = Customer_Portal
+				permissions = {Chat:false, Predefined:false, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Upload resume and apply to open job positions \n"
+				ModulePermissions
+				{
+					candidates
+					{
+						enabled= Viewall 
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							candidates_Report={"View"}
+						}
+					}
+					resume_evaluations
+					{
+						allFieldsVisible= true 
+						ReportPermissions
+						{
+							resume_evaluations_Report={"View"}
+						}
+					}
+				}
+			}
+			"Customer"
+			{
+				name = "Customer"
+				type = Customer_Portal
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This is the default profile having only add and view permission.\n"
+			}
+			roles
+			{
+				"CEO"
+				{
+					description = "User belonging to this role can access data of all other users."
+				}
+			}
+	}
+
+
+	web
+	{
+		forms
+		{
+			form candidates
+			{
+				label placement = left
+			}
+			form job_positions
+			{
+				label placement = left
+			}
+			form recruiters
+			{
+				label placement = left
+			}
+			form resume_evaluations
+			{
+				label placement = left
+			}
+		}
+		reports
+		{
+			report resume_evaluations_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								candidate as "Candidate"
+								job_position as "Job Position"
+								skill_match_score as "Skill Match Score"
+								experience_score as "Experience Score"
+								overall_score as "Overall Score"
+								ranking as "Ranking"
+								evaluation_notes as "Evaluation Notes"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    		 				Add 
+    		 				Import 
+    		 				Export 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+		     				title = "Overview"
+							fields
+							(
+								candidate as "Candidate"
+								job_position as "Job Position"
+								skill_match_score as "Skill Match Score"
+								experience_score as "Experience Score"
+								overall_score as "Overall Score"
+								ranking as "Ranking"
+								evaluation_notes as "Evaluation Notes"
+							)
+						)
+						datablock2
+						(
+							layout type = -2
+		     				title = "Candidate"
+		     				related field = candidate
+							fields
+							(
+								candidate_id as "Candidate ID"
+								full_name as "Full Name"
+								email as "Email"
+								phone_number as "Phone Number"
+								skills as "Skills"
+								experience as "Experience"
+								resume_upload as "Resume Upload"
+								applied_job as "Applied Job"
+								application_date as "Application Date"
+							)
+						)
+						datablock3
+						(
+							layout type = -2
+		     				title = "Job Position"
+		     				related field = job_position
+							fields
+							(
+								job_id as "Job ID"
+								job_title as "Job Title"
+								department as "Department"
+								required_skills as "Required Skills"
+								minimum_experience as "Minimum Experience"
+								job_description as "Job Description"
+								posting_date as "Posting Date"
+								recruiter as "Recruiter"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    	 				)
+    				)
+				)
+			}
+			report job_positions_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								job_id as "Job ID"
+								job_title as "Job Title"
+								department as "Department"
+								required_skills as "Required Skills"
+								minimum_experience as "Minimum Experience"
+								job_description as "Job Description"
+								posting_date as "Posting Date"
+								recruiter as "Recruiter"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    		 				Add 
+    		 				Import 
+    		 				Export 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+		     				title = "Overview"
+							fields
+							(
+								job_id as "Job ID"
+								job_title as "Job Title"
+								department as "Department"
+								required_skills as "Required Skills"
+								minimum_experience as "Minimum Experience"
+								job_description as "Job Description"
+								posting_date as "Posting Date"
+								recruiter as "Recruiter"
+							)
+						)
+						datablock2
+						(
+							layout type = -2
+		     				title = "Recruiter"
+		     				related field = recruiter
+							fields
+							(
+								recruiter_id as "Recruiter ID"
+								name as "Name"
+								email as "Email"
+								phone_number as "Phone Number"
+								company_name as "Company Name"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    	 				)
+    				)
+				)
+			}
+			report job_positions_by_department
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = 1
+							fields
+							(
+								job_title as "Job Title"
+								job_id as "Job ID"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    		 				Add 
+    		 				Import 
+    		 				Export 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								job_id as "Job ID"
+								job_title as "Job Title"
+								department as "Department"
+								required_skills as "Required Skills"
+								minimum_experience as "Minimum Experience"
+								job_description as "Job Description"
+								posting_date as "Posting Date"
+								recruiter as "Recruiter"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    	 				)
+    				)
+				)
+			}
+			report candidates_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								candidate_id as "Candidate ID"
+								full_name as "Full Name"
+								email as "Email"
+								phone_number as "Phone Number"
+								skills as "Skills"
+								experience as "Experience"
+								resume_upload as "Resume Upload"
+								applied_job as "Applied Job"
+								application_date as "Application Date"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    		 				Add 
+    		 				Import 
+    		 				Export 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+		     				title = "Overview"
+							fields
+							(
+								candidate_id as "Candidate ID"
+								full_name as "Full Name"
+								email as "Email"
+								phone_number as "Phone Number"
+								skills as "Skills"
+								experience as "Experience"
+								resume_upload as "Resume Upload"
+								applied_job as "Applied Job"
+								application_date as "Application Date"
+							)
+						)
+						datablock2
+						(
+							layout type = -2
+		     				title = "Applied Job"
+		     				related field = applied_job
+							fields
+							(
+								job_id as "Job ID"
+								job_title as "Job Title"
+								department as "Department"
+								required_skills as "Required Skills"
+								minimum_experience as "Minimum Experience"
+								job_description as "Job Description"
+								posting_date as "Posting Date"
+								recruiter as "Recruiter"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    	 				)
+    				)
+				)
+			}
+			report recruiters_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								recruiter_id as "Recruiter ID"
+								name as "Name"
+								email as "Email"
+								phone_number as "Phone Number"
+								company_name as "Company Name"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    		 				Add 
+    		 				Import 
+    		 				Export 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+		     				title = "Overview"
+							fields
+							(
+								recruiter_id as "Recruiter ID"
+								name as "Name"
+								email as "Email"
+								phone_number as "Phone Number"
+								company_name as "Company Name"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Print 
+    	 				)
+    				)
+				)
+			}
+		}
+		menu
+		{
+			space Space
+			{
+				displayname = "Space"
+				icon = "objects-spaceship"
+
+				section Section_1
+				{
+					displayname = "Dashboard"
+					icon = "ui-1-dashboard-half"
+					page DashBoard
+					{
+						icon = "ui-1-dashboard-half"
+					}
+				}
+				section Section_2
+				{
+					displayname = "Resume Evaluations"
+					icon = "education-board-51"
+					form  resume_evaluations
+					{
+						icon = "ui-1-bold-add"
+					}
+					report resume_evaluations_Report
+					{
+						icon = "travel-world"
+					}
+				}
+				section Section_3
+				{
+					displayname = "Job Positions"
+					icon = "users-2-a-time"
+					form  job_positions
+					{
+						icon = "ui-1-bold-add"
+					}
+					report job_positions_Report
+					{
+						icon = "education-award-55"
+					}
+					report job_positions_by_department
+					{
+						icon = "business-hierarchy-53"
+					}
+				}
+				section Section_4
+				{
+					displayname = "Candidates"
+					icon = "travel-white-house"
+					form  candidates
+					{
+						icon = "ui-1-bold-add"
+					}
+					report candidates_Report
+					{
+						icon = "travel-world"
+					}
+				}
+				section Section_5
+				{
+					displayname = "Recruiters"
+					icon = "users-single-04"
+					form  recruiters
+					{
+						icon = "ui-1-bold-add"
+					}
+					report recruiters_Report
+					{
+						icon = "travel-world"
+					}
+				}
+				section ZC_App_Preferences
+				{
+					displayname = "App Preferences"
+					icon = "design-app"
+					systemcomponent
+					{
+						type = localization
+						displayname = "Language Selection"
+						icon = "education-language"
+					}
+					systemcomponent
+					{
+						type = connection
+						displayname = "Integrations"
+						icon = "tech-2-connection"
+					}
+				}
+				section ZC_Approvals
+				{
+					displayname = "Approvals"
+					icon = "ui-2-hourglass"
+					systemcomponent
+					{
+						type = approval
+						approval status = pending
+						displayname = "Pending Tasks"
+						icon = "ui-2-hourglass"
+					}
+					systemcomponent
+					{
+						type = approval
+						approval status = completed
+						displayname = "Completed Tasks"
+						icon = "design-todo"
+					}
+				}
+				section SharedAnalytics_Section
+				{
+					type = shared_user_report_section
+					displayname = "Reports"
+					icon = "business-chart-bar-33"
+				}
+			}
+			preference
+			{
+				icon
+				{
+					style = solid
+					show = {space,section,component}
+				}
+			}
+		}
+		customize
+		{
+			new theme = 11
+			font = "poppins"
+			color options
+			{
+				color = "6"
+			}
+			logo
+			{
+				preference = "none"
+				placement = "left"
+			}
+		}
+	}
+	phone
+	{
+		forms
+		{
+			form candidates
+			{
+				label placement = auto
+			}
+			form job_positions
+			{
+				label placement = auto
+			}
+			form recruiters
+			{
+				label placement = auto
+			}
+			form resume_evaluations
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = turquoise
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	tablet
+	{
+		forms
+		{
+			form candidates
+			{
+				label placement = auto
+			}
+			form job_positions
+			{
+				label placement = auto
+			}
+			form recruiters
+			{
+				label placement = auto
+			}
+			form resume_evaluations
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = turquoise
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	translation
+{
+{"Language_Settings":{"LANGAGUE_WITH_LOGIN":"browser"}}
+}
+}
