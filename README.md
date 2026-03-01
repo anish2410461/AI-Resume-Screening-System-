@@ -170,3 +170,6 @@ Fields:
 
 ## Candidate Application
 ![Candidate Form](screenshot/CandidateForm.png)
+
+## Recruiters Application
+![Candidate Form](screenshot/Recruiter.png)
